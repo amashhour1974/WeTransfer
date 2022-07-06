@@ -41,8 +41,6 @@ export FLASK_APP=main.py; flask run
 By default it runs on port 5000
 
 - Now to test it out. You can use the snippet.py to test it out.
-
-
 - open up a terminal and run the following commands using ipyhton
 
 Line 1 and Line 2 are just imports. In line 3, it creates a CircuitBreaker object for make_request. 
