@@ -1,5 +1,5 @@
-# WeTransfer circuit-breaker Solution
-The following solution purpose is building a simple circuit-breaker using Python
+# WeTransfer circuit-breaker
+The following solution is building a simple circuit-breaker using Python
 
 Purpose
 -------
