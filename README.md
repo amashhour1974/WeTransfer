@@ -31,16 +31,16 @@ A service is best described in three states:
 Install Flask and requests. Ipython is optional
 
 ```
-pip install requests
-pip install Flask
-pip install ipython
+sudo pip install requests
+sudo pip install Flask
+sudo pip install ipython
 ```
 
 ### Installing
 
 * Run the development server
 ```
-export FLASK_APP=main.py
+export FLASK_APP=main.py;
 
 flask run
 ```
@@ -59,26 +59,34 @@ By default it runs on port 5000
 ```
 WeTransfer git:(main) ✗ ipython
 
-In [1]: from circuit_breaker import CircuitBreaker
+ In [1]: from circuit_breaker import CircuitBreaker
+
 In [2]: from snippets import make_request, faulty_endpoint, success_endpoint
+
 In [3]: obj = CircuitBreaker(make_request, exceptions=(Exception,), threshold=5, delay=10)
+
 In [4]: obj.make_remote_call(success_endpoint)
 Call to http://localhost:5000/success succeed with status code = 200
-02:05:42,344 INFO: Success: Remote call
+22:10:04,203 INFO: Success: Remote call
+22:10:04,203 INFO: Success: Remote call
 Out[4]: <Response [200]>
+
 In [5]: obj.make_remote_call(success_endpoint)
 Call to http://localhost:5000/success succeed with status code = 200
-02:05:43,625 INFO: Success: Remote call
+22:10:24,771 INFO: Success: Remote call
+22:10:24,771 INFO: Success: Remote call
 Out[5]: <Response [200]>
+
 In [6]: vars(obj)
-Out[6]:
-{'func': <function snippets.make_request(url)>,
+Out[6]: 
+{'func': <function circuit_breaker.APICircuitBreaker.__call__.<locals>.decorator(*args, **kwargs)>,
  'exceptions_to_catch': (Exception,),
  'threshold': 5,
  'delay': 10,
  'state': 'closed',
- 'last_attempt_timestamp': 1103800051.110014,
+ 'last_attempt_timestamp': 1657303824.772016,
  '_failed_attempt_count': 0}
+
 ```
 
 
