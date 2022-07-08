@@ -7,6 +7,10 @@ The idea is that when you make a remote call(HTTP Request/RPC) to another servic
 
 ## Description
 
+* circuit_breaker.py : CircuitBreaker class that handles all of the circuit breaker logic.
+* main.py : the endpoints APIs to mock the server.
+* snippet.py : use these snippets to test it out.
+
 A service is best described in three states:
 
 * Closed: The closed state is the default "everything is working as expected" state. Requests pass freely through.
