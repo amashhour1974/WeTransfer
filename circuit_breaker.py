@@ -11,7 +11,6 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
 )
 
-
 class StateChoices:
     OPEN = "open"
     CLOSED = "closed"
