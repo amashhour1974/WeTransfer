@@ -45,9 +45,13 @@ flask run
 ### Executing program
 
 * Use the snippet.py to run and test it out.
-* Step-by-step bullets
+* Open up a terminal and run the following commands using ipyhton
 ```
-code blocks for commands
+
+WeTransfer git:(main) ✗ ipython
+
+In [1]: from circuit_breaker import CircuitBreaker
+In [2]: from snippets import make_request, faulty_endpoint, success_endpoint
 ```
 
 ## Help
