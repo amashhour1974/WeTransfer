@@ -51,9 +51,7 @@ flask run
     - In line 3, it creates a CircuitBreaker object for make_request. 
     - Setting exceptions=(Exception,), this will catch all the exceptions. 
 
-
 ```
-
 WeTransfer git:(main) ✗ ipython
 
 In [1]: from circuit_breaker import CircuitBreaker
@@ -79,7 +77,7 @@ Out[6]:
 ```
 
 
-* Open up a terminal and run the following commands using ipyhton
+* Now make successive calls to the faulty endpoint.
 
     - After the first five callls to the faulty_endpoint, the next call(Line 12) will not make an api-request to the flask server instead it will raise an Exception, mentioning to retry after a specified number of secs. 
 
@@ -94,10 +92,25 @@ In [9]: obj.make_remote_call(faulty_endpoint)
 In [10]: obj.make_remote_call(faulty_endpoint)
 In [11]: obj.make_remote_call(faulty_endpoint)
 In [12]: obj.make_remote_call(faulty_endpoint)
+
+Traceback data ..........
+RemoteCallFailedException: Retry after 7.633885869918557 secs  
+In [13]: obj.make_remote_call(success_endpoint)
+---------------------------------------------------------------------------
+Traceback data......
+RemoteCallFailedException: Retry after 8.085483812012284 secs
 ```
 
+* Finally, after the delay has elapsed, make a call to the success_endpoint, it will transition from Half-Open to Closed
 
-
+```
+In [19]: obj.make_remote_call(success_endpoint)
+02:07:22,134 INFO: Changed state from open to half_open
+...
+02:07:22,134 INFO: Changed state from half_open to closed
+Out[19]: <Response [200]>
+ 
+```
  
 
 ## Help
