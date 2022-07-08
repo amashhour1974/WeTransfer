@@ -47,9 +47,9 @@ flask run
 * Use the snippet.py to test it out.
 * Open up a terminal and run the following commands using ipyhton
 
-Line 1 and Line 2 are just imports. 
-In line 3, it creates a CircuitBreaker object for make_request. 
-setting exceptions=(Exception,), this will catch all the exceptions. 
+    - Line 1 and Line 2 are just imports. 
+    - In line 3, it creates a CircuitBreaker object for make_request. 
+    - Setting exceptions=(Exception,), this will catch all the exceptions. 
 
 
 ```
@@ -83,8 +83,8 @@ Out[6]:
 
     - After the first five callls to the faulty_endpoint, the next call(Line 12) will not make an api-request to the flask server instead it will raise an Exception, mentioning to retry after a specified number of secs. 
 
-    - Even if you make an API call to the success_endpoint endpoint (Line 13), 
-     it will still raise error. It is in "Open" state.
+    - If you make an API call to the success_endpoint endpoint (Line 13), 
+    it will still raise error. It is in "Open" state.
 
 
 ```
