@@ -43,10 +43,8 @@ pip install ipython
 export FLASK_APP=main.py
 
 flask run
-
-By default it runs on port 5000
-
 ```
+By default it runs on port 5000
 
 
 ### Executing program
