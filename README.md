@@ -81,10 +81,10 @@ Out[6]:
 
 * Open up a terminal and run the following commands using ipyhton
 
-    After the first five callls to the faulty_endpoint, the next call(Line 12) will not make an api-request to the flask server instead it will raise an Exception, mentioning to retry after a specified number of secs. 
+    - After the first five callls to the faulty_endpoint, the next call(Line 12) will not make an api-request to the flask server instead it will raise an Exception, mentioning to retry after a specified number of secs. 
 
-Even if you make an API call to the success_endpoint endpoint (Line 13), 
-it will still raise error. It is in "Open" state.
+    - Even if you make an API call to the success_endpoint endpoint (Line 13), 
+     it will still raise error. It is in "Open" state.
 
 
 ```
