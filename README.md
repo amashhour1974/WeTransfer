@@ -67,14 +67,14 @@ In [3]: obj = CircuitBreaker(make_request, exceptions=(Exception,), threshold=5,
 
 In [4]: obj.make_remote_call(success_endpoint)
 Call to http://localhost:5000/success succeed with status code = 200
-22:10:04,203 INFO: Success: Remote call
-22:10:04,203 INFO: Success: Remote call
+22:25:30,332 INFO: Success: Remote call
+22:25:30,332 INFO: Success: Remote call
 Out[4]: <Response [200]>
 
 In [5]: obj.make_remote_call(success_endpoint)
 Call to http://localhost:5000/success succeed with status code = 200
-22:10:24,771 INFO: Success: Remote call
-22:10:24,771 INFO: Success: Remote call
+22:25:40,242 INFO: Success: Remote call
+22:25:40,242 INFO: Success: Remote call
 Out[5]: <Response [200]>
 
 In [6]: vars(obj)
@@ -118,9 +118,9 @@ RemoteCallFailedException: Retry after 8.085483812012284 secs
 
 ```
 In [19]: obj.make_remote_call(success_endpoint)
-02:07:22,134 INFO: Changed state from open to half_open
+22:34:49,251 INFO: Changed state from open to half_open
 ...
-02:07:22,134 INFO: Changed state from half_open to closed
+22:34:49,251 INFO: Changed state from half_open to closed
 Out[19]: <Response [200]>
  
 ```

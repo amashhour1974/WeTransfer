@@ -71,8 +71,7 @@ class CircuitBreaker:
             if self._failed_attempt_count >= self.threshold:
                 self.set_state(StateChoices.OPEN)
             # re-raise the exception
-            raise RemoteCallFailedException from e
-            #raise RemoteCallFailedException("CircuitOpenError...")
+            raise RemoteCallFailedException("CircuitOpenError...")
 
     def handle_open_state(self, *args, **kwargs):
         current_timestamp = datetime.utcnow().timestamp()
