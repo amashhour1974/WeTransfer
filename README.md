@@ -46,6 +46,12 @@ flask run
 
 * Use the snippet.py to test it out.
 * Open up a terminal and run the following commands using ipyhton
+
+Line 1 and Line 2 are just imports. 
+In line 3, it creates a CircuitBreaker object for make_request. 
+setting exceptions=(Exception,), this will catch all the exceptions. 
+
+
 ```
 
 WeTransfer git:(main) ✗ ipython
@@ -72,15 +78,14 @@ Out[6]:
  '_failed_attempt_count': 0}
 ```
 
-Line 1 and Line 2 are just imports. In line 3, it creates a CircuitBreaker object for make_request. 
-setting exceptions=(Exception,), this will catch all the exceptions. 
-narrow down the exception to the one that we actually want to catch, in this case, Network Exceptions.
 
 * Open up a terminal and run the following commands using ipyhton
-Make following calls as fast as possible. After the first five callls to the faulty_endpoint, the next call(Line 12)
-will not make an api-request to the flask server instead it will raise an Exception, mentioning to retry after a 
-specified number of secs. Even if you make an API call to the success_endpoint endpoint (Line 13), it will still raise
-error. It is in "Open" state.
+
+After the first five callls to the faulty_endpoint, the next call(Line 12) will not make an api-request to the flask server instead it will raise an Exception, mentioning to retry after a specified number of secs. 
+
+Even if you make an API call to the success_endpoint endpoint (Line 13), 
+it will still raise error. It is in "Open" state.
+
 
 ```
 In [7]: obj.make_remote_call(faulty_endpoint)
@@ -90,7 +95,8 @@ In [10]: obj.make_remote_call(faulty_endpoint)
 In [11]: obj.make_remote_call(faulty_endpoint)
 In [12]: obj.make_remote_call(faulty_endpoint)
 ```
- 
+
+
 
  
 
