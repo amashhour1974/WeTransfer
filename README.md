@@ -15,9 +15,9 @@ The service stats:
 
 circuit-breaker purpose:
 
-    * To prevent a network or service failure from cascading to other services.
-    * Saves bandwidth by not making requests over a network when the service you’re requesting is down.
-    * Gives time for the failing service to recover.
+* To prevent a network or service failure from cascading to other services.
+* Saves bandwidth by not making requests over a network when the service you’re requesting is down.
+* Gives time for the failing service to recover.
 
 
 
