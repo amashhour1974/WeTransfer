@@ -1,4 +1,4 @@
-# WeTransfer circuit-breaker
+# Circuit-breaker
 
 The solution is building a simple circuit-breaker using Python.
 
@@ -26,10 +26,11 @@ A service is best described in three states:
 
 Install Flask and requests. Ipython is optional
 
-* pip install requests
-* pip install Flask
-* pip install ipython
-
+```
+pip install requests
+pip install Flask
+pip install ipython
+```
 
 ### Installing
 
@@ -43,7 +44,7 @@ flask run
 
 ### Executing program
 
-* How to run the program
+* Use the snippet.py to run and test it out.
 * Step-by-step bullets
 ```
 code blocks for commands
