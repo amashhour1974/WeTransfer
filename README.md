@@ -44,7 +44,7 @@ Install Flask and requests. Ipython is optional
 
 - Run the development server
 
-    export FLASK_APP=main.py; 
+    export FLASK_APP=main.py
     flask run
 
     By default it runs on port 5000
