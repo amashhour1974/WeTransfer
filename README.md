@@ -44,7 +44,7 @@ flask run
 
 ### Executing program
 
-* Use the snippet.py to run and test it out.
+* Use the snippet.py to test it out.
 * Open up a terminal and run the following commands using ipyhton
 ```
 
@@ -52,7 +52,47 @@ WeTransfer git:(main) ✗ ipython
 
 In [1]: from circuit_breaker import CircuitBreaker
 In [2]: from snippets import make_request, faulty_endpoint, success_endpoint
+In [3]: obj = CircuitBreaker(make_request, exceptions=(Exception,), threshold=5, delay=10)
+In [4]: obj.make_remote_call(success_endpoint)
+Call to http://localhost:5000/success succeed with status code = 200
+02:05:42,344 INFO: Success: Remote call
+Out[4]: <Response [200]>
+In [5]: obj.make_remote_call(success_endpoint)
+Call to http://localhost:5000/success succeed with status code = 200
+02:05:43,625 INFO: Success: Remote call
+Out[5]: <Response [200]>
+In [6]: vars(obj)
+Out[6]:
+{'func': <function snippets.make_request(url)>,
+ 'exceptions_to_catch': (Exception,),
+ 'threshold': 5,
+ 'delay': 10,
+ 'state': 'closed',
+ 'last_attempt_timestamp': 1103800051.110014,
+ '_failed_attempt_count': 0}
 ```
+
+Line 1 and Line 2 are just imports. In line 3, it creates a CircuitBreaker object for make_request. 
+setting exceptions=(Exception,), this will catch all the exceptions. 
+narrow down the exception to the one that we actually want to catch, in this case, Network Exceptions.
+
+* Open up a terminal and run the following commands using ipyhton
+Make following calls as fast as possible. After the first five callls to the faulty_endpoint, the next call(Line 12)
+will not make an api-request to the flask server instead it will raise an Exception, mentioning to retry after a 
+specified number of secs. Even if you make an API call to the success_endpoint endpoint (Line 13), it will still raise
+error. It is in "Open" state.
+
+```
+In [7]: obj.make_remote_call(faulty_endpoint)
+In [8]: obj.make_remote_call(faulty_endpoint)
+In [9]: obj.make_remote_call(faulty_endpoint)
+In [10]: obj.make_remote_call(faulty_endpoint)
+In [11]: obj.make_remote_call(faulty_endpoint)
+In [12]: obj.make_remote_call(faulty_endpoint)
+```
+ 
+
+ 
 
 ## Help
 
