@@ -4,10 +4,18 @@ The following solution is building a simple circuit-breaker using Python
 Purpose
 -------
 - When all services were working and the remote calls were returning without any errors, we call this state — “Closed”.
+Closed: The closed state is the default "everything is working as expected" state. Requests pass freely through.
+
 
 - When the remote calls continued to fail and when we stopped making any more remote calls to the failing service, we call this state — “Open”
+Open: The open state rejects all requests without attempting to send them.
+
 
 - After a certain delay, when we make a remote call to the failing service, the state transitions from “Open” to “Half-Open”. If the remote call does not fail, then we transition the state from “Half Open” to “Closed” and the subsequent remote calls are allowed to be made. 
+
+Half-Open: A set number of requests are let through in order to test the status of the resource. This state determines if the circuit returns to closed or open.
+
+
 
 - In case the remote call failed, we transition the state from “Half Open”, back to “Open” state and we wait for a certain period of time till we can make the next remote call (in Half Open state)
 
@@ -22,9 +30,9 @@ Purpose
 
 Install Flask and requests. Ipython is optional
 
-pip install requests
-pip install Flask
-pip install ipython
+    pip install requests
+    pip install Flask
+    pip install ipython
 
 # Complete Code
 
@@ -36,16 +44,17 @@ pip install ipython
 
 - Run the development server
 
-export FLASK_APP=main.py; flask run
+    export FLASK_APP=main.py; 
+    flask run
 
-By default it runs on port 5000
+    By default it runs on port 5000
 
 - Now to test it out. You can use the snippet.py to test it out.
 - open up a terminal and run the following commands using ipyhton
 
-Line 1 and Line 2 are just imports. In line 3, it creates a CircuitBreaker object for make_request. 
-setting exceptions=(Exception,), this will catch all the exceptions. 
-narrow down the exception to the one that we actually want to catch, in this case, Network Exceptions.
+    Line 1 and Line 2 are just imports. In line 3, it creates a CircuitBreaker object for make_request. 
+    setting exceptions=(Exception,), this will catch all the exceptions. 
+    narrow down the exception to the one that we actually want to catch, in this case, Network Exceptions.
 
 WeTransfer git:(main) ✗ ipython
 In [1]: from circuit_breaker import CircuitBreaker
