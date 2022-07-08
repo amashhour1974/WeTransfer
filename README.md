@@ -97,7 +97,6 @@ Out[6]:
     - If you make an API call to the success_endpoint endpoint (Line 13), 
     it will still raise error. It is in "Open" state.
 
-
 ```
 In [7]: obj.make_remote_call(faulty_endpoint)
 In [8]: obj.make_remote_call(faulty_endpoint)
@@ -125,7 +124,6 @@ Out[19]: <Response [200]>
  
 ```
  
-
 ## Help
 
 Any advise for common problems or issues.
